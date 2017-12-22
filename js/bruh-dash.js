@@ -12,11 +12,13 @@ global.bruhdash = {
   // returns the first element of an array
   first: function(array){
       return array[0];
+      // array.shift() works as well //
   },
 
   // returns the last element of an array
   last: function(array){
       return array[array.length -1];
+      // array.pop() works as well //
   },
 
   // returns the index of the first matching element from left to right
@@ -37,31 +39,71 @@ global.bruhdash = {
   
   // returns an array with all falsey values removed
   compact: function(array){
-
-  },
+        return array.filter(Boolean);
+      },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
-
+  slice: function(array, start, end){
+      return array.slice(start, end);
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  drop: function(array, n){ 
+    if (n === 0){
+        return array;
+    // if n equals 0 amount of elements, whole array is returned //
+      }else if (n){
+        array.splice(0, n);
+        return array;
+    // if n amount is specified, return array starting from beginning //
+    // array.splice(0,n) = [1,2]
+    // array = [3,4,5]
+      }else{
+        array.shift();
+        return array;
+    // if n amount is not specified, return array without first element //
+    // array.shift() = [1]
+    // array = [2,3,4,5]
+      }  
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
-
+  dropRight: function(array, n){
+    if (n === 0){
+     return array;
+    // if n is 0; return whole array //
+    }else if (n){
+      array.splice(-n);
+      return array;
+    // if n is specified, return array starting from end (-) //
+    // array.splice(-2) = [4,5] //
+    // array = [1,2,3] //
+    }else{
+      array.pop();
+      return array;
+    // if n is not specified, return array without last element //
+    // array.pop() = [5] //
+    // array = [1,2,3,4] //
+    }
   },
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
-
+  take: function(array, n){
+    if (n === 0){
+      array = [];
+      return array;
+    }else if (n > array.length){
+      return array;
+    }else if (n){
+      array.splice(n);
+      return array;
+    }else if (array){
+      return [array[0]];
+    }
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
+  takeRight: function() {
 
   },
 
