@@ -70,7 +70,7 @@ global.bruhdash = {
   // returns a slice of array with n elements dropped from the end
   dropRight: function(array, n){
     if (n === 0){
-     return array;
+      return array;
     // if n is 0; return whole array //
     }else if (n){
       array.splice(-n);
@@ -103,18 +103,38 @@ global.bruhdash = {
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function() {
-
+  takeRight: function(array, n){
+    if (n === 0){
+      array = [];
+      // console.log(array);
+      return array;
+    }else if (n > array.length){
+      return array;
+    }else if (n){
+      // console.log(array.splice(-n));
+      return array.splice(-n);
+    }else if (array){
+      // console.log(array[array.length -1]);
+      return [array[array.length -1]];
+    }
   },
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
-
+  fill: function(array, value, start, end){
+    if (start === undefined && end === undefined){
+      array.fill(value);
+      // console.log(array);
+      return array;
+    }else{
+      array.fill(value, start, end);
+      //  console.log(array);
+       return array;
+    }
   },
 
   // removes all given values from an array
-  pull: function () {
+  pull: function(array, values){
 
   },
 
